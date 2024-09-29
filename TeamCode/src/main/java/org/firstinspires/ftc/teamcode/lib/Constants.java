@@ -18,7 +18,6 @@ public class Constants {
 
     public static final int DEFAULTINCHES = 1;
     public static final int DEFAULTDEGREE = 1;
-    public static final double WHEELDIAMETER = 4;
     public static final double ROBOTRADIUS = 9;
 
     public static final double STOPPOWER = 0.0;

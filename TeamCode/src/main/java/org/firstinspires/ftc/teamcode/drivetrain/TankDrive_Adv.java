@@ -5,9 +5,9 @@ import org.firstinspires.ftc.teamcode.lib.Motor;
 
 import java.util.ArrayList;
 
-public class TankDrive implements DriveInterface {
+public class TankDrive_Adv implements DriveInterface {
     private ArrayList<Motor> motors;
-    public TankDrive(ArrayList<Motor> motorsArg) {
+    public TankDrive_Adv(ArrayList<Motor> motorsArg) {
         // Constructor
         motors = motorsArg;
     }

@@ -8,6 +8,8 @@ public class Motor {
     private DcMotorSimple.Direction direction;
     private String position;
     private double CPR;
+    private double wheelDiameter;
+
     private double movementInInches;
     private double movementPerDegree;
 
@@ -17,19 +19,20 @@ public class Motor {
      * @param direction The direction of the motor.
      * @param position The position of the motor.
      */
-    public Motor(DcMotor motor, DcMotorSimple.Direction direction, String position, double CPR) {
+    public Motor(DcMotor motor, DcMotorSimple.Direction direction, String position, double CPR, double wheelDiameter) {
         this.motor = motor;
         this.direction = direction;
         this.position = position;
         this.CPR = CPR;
+        this.wheelDiameter = wheelDiameter;
 
         // Default settings for the motor
         this.motor.setZeroPowerBehavior(Constants.brakeMode);
         this.motor.setMode(Constants.stopAndReset);
 
         // Calculate the movement in inches and movement per degree for this motor
-        movementInInches = CPR / (Constants.WHEELDIAMETER * Math.PI);
-        movementPerDegree = ((Constants.ROBOTRADIUS / (Constants.WHEELDIAMETER / 2)) * CPR) / 360;
+        movementInInches = CPR / (wheelDiameter * Math.PI);
+        movementPerDegree = ((Constants.ROBOTRADIUS / (wheelDiameter / 2)) * CPR) / 360;
     }
 
     /**
