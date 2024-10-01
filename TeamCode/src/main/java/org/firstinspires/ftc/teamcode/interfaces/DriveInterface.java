@@ -1,13 +1,15 @@
 package org.firstinspires.ftc.teamcode.interfaces;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
+
 public interface DriveInterface {
+
     /**
      * Drive the robot
      *
-     * @param leftInput  the input for the left side of the robot
-     * @param rightInput the input for the right side of the robot
+     * @param gamepad the gamepad used to drive the robot
      */
-    void drive(double leftInput, double rightInput);
+    void drive(Gamepad gamepad);
 
     /**
      * Move the robot forward or backward

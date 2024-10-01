@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.drivetrain.TankDrive_Adv;
 import org.firstinspires.ftc.teamcode.lib.Motor;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ public class Robot1OpMode_Linear_Adv extends LinearOpMode {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
     private ArrayList<Motor> motors = new ArrayList<Motor>();
+    private TankDrive_Adv tankDrive;
 
     public Robot1OpMode_Linear_Adv() {
-
         motors.add(
             new Motor(
                 hardwareMap.get(DcMotor.class, "leftFrontMotor"),
@@ -59,6 +60,8 @@ public class Robot1OpMode_Linear_Adv extends LinearOpMode {
                     4
             )
         );
+
+        tankDrive = new TankDrive_Adv(motors);
     }
 
     @Override
@@ -72,6 +75,8 @@ public class Robot1OpMode_Linear_Adv extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
+            tankDrive.drive(gamepad1);
+
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.update();

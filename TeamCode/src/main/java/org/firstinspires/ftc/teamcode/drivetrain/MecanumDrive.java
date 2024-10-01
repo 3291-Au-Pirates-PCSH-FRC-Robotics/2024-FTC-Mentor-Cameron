@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.drivetrain;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
+
 import org.firstinspires.ftc.teamcode.interfaces.DriveInterface;
 
 public class MecanumDrive implements DriveInterface {
@@ -7,7 +9,7 @@ public class MecanumDrive implements DriveInterface {
         // Constructor
     }
 
-    public void drive(double leftInput, double rightInput) {
+    public void drive(Gamepad gamepad) {
         // Drive the robot
     }
 

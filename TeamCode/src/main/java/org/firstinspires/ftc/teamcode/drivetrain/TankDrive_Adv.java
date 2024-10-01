@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.drivetrain;
 
+import com.qualcomm.robotcore.hardware.Gamepad;
+
 import org.firstinspires.ftc.teamcode.interfaces.DriveInterface;
 import org.firstinspires.ftc.teamcode.lib.Motor;
 
@@ -12,12 +14,12 @@ public class TankDrive_Adv implements DriveInterface {
         motors = motorsArg;
     }
 
-    public void drive(double leftInput, double rightInput) {
+    public void drive(Gamepad gamepad) {
         // Drive the robot
-        motors.get(0).getMotor().setPower(leftInput);
-        motors.get(1).getMotor().setPower(rightInput);
-        motors.get(2).getMotor().setPower(leftInput);
-        motors.get(3).getMotor().setPower(rightInput);
+        motors.get(0).getMotor().setPower(gamepad.left_stick_y);
+        motors.get(1).getMotor().setPower(gamepad.right_stick_y);
+        motors.get(2).getMotor().setPower(gamepad.left_stick_y);
+        motors.get(3).getMotor().setPower(gamepad.right_stick_y);
     }
 
     public void moveForwardOrBackward(double speed, double distance) {

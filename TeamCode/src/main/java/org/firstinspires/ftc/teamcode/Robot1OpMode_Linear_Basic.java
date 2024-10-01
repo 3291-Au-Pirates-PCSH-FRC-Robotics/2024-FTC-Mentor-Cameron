@@ -13,11 +13,14 @@ import org.firstinspires.ftc.teamcode.drivetrain.TankDrive_Basic;
 public class Robot1OpMode_Linear_Basic extends LinearOpMode {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
+
+    // Get motors from configuration
     private DcMotor leftFrontMotor = hardwareMap.dcMotor.get("leftFrontMotor");
     private DcMotor rightFrontMotor = hardwareMap.dcMotor.get("rightFrontMotor");
     private DcMotor leftBackMotor = hardwareMap.dcMotor.get("leftBackMotor");
     private DcMotor rightBackMotor = hardwareMap.dcMotor.get("rightBackMotor");
 
+    // Define the tank drive variable
     private TankDrive_Basic tankDrive;
 
     @Override
@@ -25,21 +28,25 @@ public class Robot1OpMode_Linear_Basic extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
+        // Set the direction of the motors
         leftFrontMotor.setDirection(DcMotor.Direction.FORWARD);
         rightFrontMotor.setDirection(DcMotor.Direction.REVERSE);
         leftBackMotor.setDirection(DcMotor.Direction.FORWARD);
         rightBackMotor.setDirection(DcMotor.Direction.REVERSE);
 
+        // Set the zero power behavior of the motors
         leftFrontMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightFrontMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBackMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightBackMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        // Set the mode of the motors
         leftFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightBackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
+        // Create the tank drive object
         tankDrive = new TankDrive_Basic(leftFrontMotor, rightFrontMotor, leftBackMotor, rightBackMotor);
 
         // Wait for the game to start (driver presses START)
@@ -48,7 +55,8 @@ public class Robot1OpMode_Linear_Basic extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            tankDrive.drive(gamepad1.left_stick_y, gamepad1.right_stick_y);
+            // Drive the robot
+            tankDrive.drive(gamepad1);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
